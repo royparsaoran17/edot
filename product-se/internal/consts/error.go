@@ -14,6 +14,7 @@ const (
 	ErrWrongPassword     = Error("wrong password")
 	ErrPhoneAlreadyExist = Error("phone already exist")
 	ErrProductNotFound   = Error("product not found")
+	ErrStockNotFound     = Error("stock not found")
 
 	ErrInvalidUUID = Error("UUID is not in its proper form")
 )

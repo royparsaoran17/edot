@@ -46,3 +46,28 @@ func (r *ProductCreate) Validate() error {
 		"category":    validation.Validate(&r.Category, validation.Required),
 	}.Filter()
 }
+
+type ProductCreateStock struct {
+	ID          string `json:"id"`
+	ProductID   string `json:"product_id"`
+	WarehouseID string `json:"warehouse_id"`
+	Quantity    int    `json:"price"`
+}
+
+func (r *ProductCreateStock) Validate() error {
+	return validation.Errors{
+		"ProductID":   validation.Validate(&r.ProductID, validation.Required),
+		"WarehouseID": validation.Validate(&r.WarehouseID, validation.Required),
+		"Quantity":    validation.Validate(&r.Quantity, validation.Required),
+	}.Filter()
+}
+
+type ProductUpdateStock struct {
+	Quantity int `json:"price"`
+}
+
+func (r *ProductUpdateStock) Validate() error {
+	return validation.Errors{
+		"Quantity": validation.Validate(&r.Quantity, validation.Required),
+	}.Filter()
+}

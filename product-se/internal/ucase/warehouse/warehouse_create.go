@@ -1,49 +1,43 @@
-package auth
+package warehouse
 
 import (
 	validation "github.com/go-ozzo/ozzo-validation/v4"
 	"net/http"
 	"product-se/internal/consts"
-	"product-se/internal/service/auth"
-	"product-se/pkg/jwt"
 
 	"product-se/pkg/tracer"
 
 	"github.com/pkg/errors"
 	"product-se/internal/appctx"
 	"product-se/internal/presentations"
+	"product-se/internal/service/warehouse"
 	"product-se/internal/ucase/contract"
 )
 
-type verify struct {
-	service auth.Auth
+type warehouseCreate struct {
+	service warehouse.Warehouse
 }
 
-func (c verify) Serve(data *appctx.Data) appctx.Response {
-	ctx := tracer.SpanStart(data.Request.Context(), "usecase.verify")
+func (r warehouseCreate) Serve(data *appctx.Data) appctx.Response {
+	ctx := tracer.SpanStart(data.Request.Context(), "usecase.warehouse_create")
 	defer tracer.SpanFinish(ctx)
 
-	responder := appctx.NewResponse().WithState("verify")
+	responder := appctx.NewResponse().WithState("warehouseCreate")
 
-	var input presentations.Verify
+	var input presentations.WarehouseCreate
 	if err := data.Cast(&input); err != nil {
 		return *responder.WithCode(http.StatusBadRequest).
 			WithError(err.Error()).
 			WithMessage(http.StatusText(http.StatusBadRequest))
 	}
 
-	users, err := c.service.Verify(input)
+	_, err := r.service.CreateWarehouse(ctx, input)
 	if err != nil {
 		causer := errors.Cause(err)
 		switch causer {
-		case jwt.ErrTokenExpired:
-			return *responder.
-				WithCode(http.StatusUnauthorized).
-				WithMessage(causer.Error())
-
 		default:
 			switch cause := causer.(type) {
-			case consts.Error, jwt.Error:
+			case consts.Error:
 				return *responder.
 					WithCode(http.StatusBadRequest).
 					WithMessage(cause.Error())
@@ -64,11 +58,10 @@ func (c verify) Serve(data *appctx.Data) appctx.Response {
 	}
 
 	return *responder.
-		WithCode(http.StatusOK).
-		WithData(users).
-		WithMessage("user created")
+		WithCode(http.StatusCreated).
+		WithMessage("warehouse created")
 }
 
-func NewVerify(service auth.Auth) contract.UseCase {
-	return &verify{service: service}
+func NewWarehouseCreate(service warehouse.Warehouse) contract.UseCase {
+	return &warehouseCreate{service: service}
 }

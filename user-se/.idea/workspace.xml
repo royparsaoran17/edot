@@ -4,7 +4,39 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83df1fc7-9655-4004-b628-f7e25079cc5b" name="Changes" comment="" />
+    <list default="true" id="83df1fc7-9655-4004-b628-f7e25079cc5b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../product-se/internal/repositories/internal/product/product_create_stock.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../product-se/internal/repositories/internal/product/product_get_stock.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../product-se/internal/repositories/internal/product/product_stock_movement.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../product-se/internal/repositories/internal/product/product_stock_movement_by_product_id.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../product-se/internal/repositories/internal/product/product_update_stock.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../product-se/internal/repositories/internal/warehouse/warehouse_create_move_stock.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../product-se/internal/repositories/internal/warehouse/warehouse_get_stock.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../product-se/internal/router/router_product.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../product-se/internal/router/router_warehouse.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../product-se/internal/service/warehouse/warehouse_contract.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../product-se/internal/service/warehouse/warehouse_service.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../product-se/internal/ucase/product/product_get_all.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../product-se/internal/ucase/product/product_get_by_id.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../product-se/internal/ucase/product/product_update.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../product-se/internal/ucase/warehouse/warehouse_get_all.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../product-se/internal/ucase/warehouse/warehouse_get_by_id.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../product-se/internal/ucase/warehouse/warehouse_update.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/internal/consts/error.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/internal/consts/error.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/internal/dto/product.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/internal/entity/product.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/internal/entity/product.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/internal/entity/warehouse.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/internal/entity/warehouse.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/internal/presentations/product.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/internal/presentations/product.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/internal/presentations/warehouse.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/internal/presentations/warehouse.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/internal/repositories/contract_repo.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/internal/repositories/contract_repo.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/internal/router/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/internal/router/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/internal/service/product/product_contract.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/internal/service/product/product_contract.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/internal/service/product/product_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/internal/service/product/product_service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/internal/ucase/auth/auth_login.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/internal/ucase/product/product_create.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/internal/ucase/auth/auth_verify.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/internal/ucase/warehouse/warehouse_create.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,7 +49,7 @@
       </list>
     </option>
   </component>
-  <component name="GOROOT" url="file://$USER_HOME$/sdk/go1.24.2" />
+  <component name="GOROOT" url="file:///opt/homebrew/opt/go/libexec" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -50,7 +82,7 @@
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/work/Playground/edot/user-se",
+    "last_opened_file_path": "/Users/royparsaoran/Roy/PlayGround/edot/user-se",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
@@ -94,8 +126,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-gosdk-3b128438d3f6-34ac7aa8f6ab-org.jetbrains.plugins.go.sharedIndexes.bundled-GO-251.23774.430" />
-        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-GO-251.23774.430" />
+        <option value="bundled-gosdk-d297c17c1fbd-57c114c3cede-org.jetbrains.plugins.go.sharedIndexes.bundled-GO-243.24978.59" />
+        <option value="bundled-js-predefined-d6986cc7102b-76f8388c3a79-JavaScript-GO-243.24978.59" />
       </set>
     </attachedChunks>
   </component>

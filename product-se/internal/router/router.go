@@ -11,6 +11,8 @@ import (
 	"net/http"
 	"product-se/internal/presentations"
 	"product-se/internal/repositories"
+	"product-se/internal/service/product"
+	"product-se/internal/service/warehouse"
 	"product-se/pkg/tracer"
 	"time"
 
@@ -151,19 +153,25 @@ func (rtr *router) Route() *routerkit.Router {
 	db := bootstrap.RegistryPostgres(rtr.config.WriteDB)
 
 	// repositories
-	repositories.NewRepository(db)
+	repo := repositories.NewRepository(db)
 
 	// init redis
 	//rdb := bootstrap.RegistryRedisNative(rtr.config)
 
 	// initiate services
-	var ()
+	var (
+		productService   = product.NewService(repo)
+		warehouseService = warehouse.NewService(repo)
+	)
 
 	// healthy
 	liveness.HandleFunc("/liveness", rtr.handle(
 		handler.HttpRequest,
 		ucase.NewHealthCheck(),
 	)).Methods(http.MethodGet)
+
+	rtr.mountProducts(productService)
+	rtr.mountWarehouses(warehouseService)
 
 	return rtr.router
 

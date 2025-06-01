@@ -28,7 +28,7 @@ func (s *service) GetAllProduct(ctx context.Context, meta *common.Metadata) ([]e
 	return products, nil
 }
 
-func (s *service) GetProductByID(ctx context.Context, productID string) (*entity.ProductDetail, error) {
+func (s *service) GetProductByID(ctx context.Context, productID string) (*entity.Product, error) {
 	products, err := s.repo.Product.FindProductByID(ctx, productID)
 	if err != nil {
 		return nil, errors.Wrapf(err, "getting product id %s", productID)
@@ -47,12 +47,6 @@ func (s *service) UpdateProductByID(ctx context.Context, productID string, input
 		return errors.Wrapf(err, "getting product id %s", productID)
 	}
 
-	_, err = s.repo.Role.FindRoleByID(ctx, input.RoleID)
-	if err != nil {
-		return errors.Wrap(err, "creating product")
-
-	}
-
 	if err := s.repo.Product.UpdateProduct(ctx, productID, input); err != nil {
 		return errors.Wrap(err, "updating product")
 
@@ -61,20 +55,14 @@ func (s *service) UpdateProductByID(ctx context.Context, productID string, input
 	return nil
 }
 
-func (s *service) CreateProduct(ctx context.Context, input presentations.ProductCreate) (*entity.ProductDetail, error) {
+func (s *service) CreateProduct(ctx context.Context, input presentations.ProductCreate) (*entity.Product, error) {
 	if err := input.Validate(); err != nil {
 		return nil, errors.Wrap(err, "validation(s) error")
 	}
 
-	_, err := s.repo.Role.FindRoleByID(ctx, input.RoleID)
-	if err != nil {
-		return nil, errors.Wrap(err, "creating product")
-
-	}
-
 	productID := uuid.NewString()
 	input.ID = productID
-	err = s.repo.Product.CreateProduct(ctx, input)
+	err := s.repo.Product.CreateProduct(ctx, input)
 	if err != nil {
 		return nil, errors.Wrap(err, "creating product")
 
