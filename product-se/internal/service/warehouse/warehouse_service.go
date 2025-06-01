@@ -5,6 +5,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/pkg/errors"
 	"product-se/internal/common"
+	"product-se/internal/consts"
 	"product-se/internal/entity"
 	"product-se/internal/presentations"
 	"product-se/internal/repositories"
@@ -61,7 +62,6 @@ func (s *service) UpdateWarehouseByID(ctx context.Context, warehouseID string, i
 
 	if err := s.repo.Warehouse.UpdateWarehouse(ctx, warehouseID, input); err != nil {
 		return errors.Wrap(err, "updating warehouse")
-
 	}
 
 	return nil
@@ -86,4 +86,68 @@ func (s *service) CreateWarehouse(ctx context.Context, input presentations.Wareh
 	}
 
 	return warehouse, nil
+}
+
+func (s *service) AddWarehouseStock(ctx context.Context, input presentations.WarehouseStock) (*entity.ProductStock, error) {
+	warehouse, err := s.repo.Warehouse.FindWarehouseByID(ctx, input.ID)
+	if err != nil {
+		return nil, errors.Wrapf(err, "getting warehouse id %s", input.ID)
+	}
+
+	product, err := s.repo.Product.FindProductByID(ctx, input.ProductID)
+	if err != nil {
+		return nil, errors.Wrapf(err, "getting warehouse id %s", input.ID)
+	}
+
+	productWarehouseStock, err := s.repo.Product.GetStockDetail(ctx, product.ID, warehouse.ID)
+	if err != nil {
+		return nil, errors.Wrapf(err, "getting warehouse id %s", input.ID)
+	}
+
+	if err := s.repo.Product.UpdateProductStock(ctx, input.ID, presentations.ProductUpdateStock{
+		Quantity: productWarehouseStock.Quantity + input.Quantity,
+	}); err != nil {
+		return nil, errors.Wrap(err, "updating warehouse")
+	}
+
+	updatedProductWarehouseStock, err := s.repo.Product.GetStockDetail(ctx, product.ID, warehouse.ID)
+	if err != nil {
+		return nil, errors.Wrapf(err, "getting warehouse id %s", input.ID)
+	}
+
+	return updatedProductWarehouseStock, nil
+}
+
+func (s *service) DeductWarehouseStock(ctx context.Context, input presentations.WarehouseStock) (*entity.ProductStock, error) {
+	warehouse, err := s.repo.Warehouse.FindWarehouseByID(ctx, input.ID)
+	if err != nil {
+		return nil, errors.Wrapf(err, "getting warehouse id %s", input.ID)
+	}
+
+	product, err := s.repo.Product.FindProductByID(ctx, input.ProductID)
+	if err != nil {
+		return nil, errors.Wrapf(err, "getting warehouse id %s", input.ID)
+	}
+
+	productWarehouseStock, err := s.repo.Product.GetStockDetail(ctx, product.ID, warehouse.ID)
+	if err != nil {
+		return nil, errors.Wrapf(err, "getting warehouse id %s", input.ID)
+	}
+
+	if productWarehouseStock.Quantity < input.Quantity {
+		return nil, consts.ErrWarehouseStockEmpty
+	}
+
+	if err := s.repo.Product.UpdateProductStock(ctx, input.ID, presentations.ProductUpdateStock{
+		Quantity: productWarehouseStock.Quantity - input.Quantity,
+	}); err != nil {
+		return nil, errors.Wrap(err, "updating warehouse")
+	}
+
+	updatedProductWarehouseStock, err := s.repo.Product.GetStockDetail(ctx, product.ID, warehouse.ID)
+	if err != nil {
+		return nil, errors.Wrapf(err, "getting warehouse id %s", input.ID)
+	}
+
+	return updatedProductWarehouseStock, nil
 }

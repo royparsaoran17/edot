@@ -9,6 +9,7 @@ func (e Error) Error() string {
 const (
 	ErrProductAlreadyExist   = Error("product already exist")
 	ErrWarehouseAlreadyExist = Error("warehouse already exist")
+	ErrWarehouseStockEmpty   = Error("warehouse stock is not empty")
 	ErrWarehouseNotFound     = Error("warehouse not found")
 
 	ErrWrongPassword     = Error("wrong password")

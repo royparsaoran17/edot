@@ -13,4 +13,6 @@ type Warehouse interface {
 	GetWarehouseByID(ctx context.Context, warehouseID string) (*entity.WarehouseDetail, error)
 	UpdateWarehouseByID(ctx context.Context, warehouseID string, input presentations.WarehouseUpdate) error
 	CreateWarehouse(ctx context.Context, input presentations.WarehouseCreate) (*entity.Warehouse, error)
+	AddWarehouseStock(ctx context.Context, input presentations.WarehouseStock) (*entity.ProductStock, error)
+	DeductWarehouseStock(ctx context.Context, input presentations.WarehouseStock) (*entity.ProductStock, error)
 }

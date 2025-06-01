@@ -22,8 +22,9 @@ type Product interface {
 	GetAllProduct(ctx context.Context, meta *common.Metadata) ([]entity.Product, error)
 	FindProductByID(ctx context.Context, productID string) (*entity.Product, error)
 	GetStockMovement(ctx context.Context) ([]entity.StockMovement, error)
-	GetStockMovementByProductID(ctx context.Context, productID string) (*entity.StockMovement, error)
+	GetStockMovementByProductID(ctx context.Context, productID string) ([]entity.StockMovement, error)
 	GetStock(ctx context.Context, productID string) ([]entity.ProductStock, error)
+	GetStockDetail(ctx context.Context, productID, warehouseID string) (*entity.ProductStock, error)
 	CreateProductStock(ctx context.Context, input presentations.ProductCreateStock) error
 	UpdateProductStock(ctx context.Context, stockID string, input presentations.ProductUpdateStock) error
 }

@@ -5,36 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83df1fc7-9655-4004-b628-f7e25079cc5b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/internal/repositories/internal/product/product_create_stock.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/repositories/internal/product/product_get_stock.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/repositories/internal/product/product_stock_movement.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/repositories/internal/product/product_stock_movement_by_product_id.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/repositories/internal/product/product_update_stock.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/repositories/internal/warehouse/warehouse_create_move_stock.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/repositories/internal/warehouse/warehouse_get_stock.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/router/router_product.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/router/router_warehouse.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/service/warehouse/warehouse_contract.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/service/warehouse/warehouse_service.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/ucase/product/product_get_all.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/ucase/product/product_get_by_id.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/ucase/product/product_update.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/ucase/warehouse/warehouse_get_all.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/ucase/warehouse/warehouse_get_by_id.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/ucase/warehouse/warehouse_update.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/repositories/internal/product/product_get_stock_detail.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/consts/error.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/consts/error.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/dto/product.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/entity/product.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/entity/product.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/entity/warehouse.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/entity/warehouse.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/presentations/product.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/presentations/product.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/presentations/warehouse.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/presentations/warehouse.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/repositories/contract_repo.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repositories/contract_repo.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/router/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/router/router.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/service/product/product_contract.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/product/product_contract.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/service/product/product_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/product/product_service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/ucase/auth/auth_login.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/ucase/product/product_create.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/ucase/auth/auth_verify.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/ucase/warehouse/warehouse_create.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repositories/internal/product/product_stock_movement_by_product_id.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repositories/internal/product/product_stock_movement_by_product_id.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/service/warehouse/warehouse_contract.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/warehouse/warehouse_contract.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/service/warehouse/warehouse_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/warehouse/warehouse_service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/ucase/product/product_get_all.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/ucase/product/product_get_all.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../user-se/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../user-se/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,7 +61,7 @@
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/Users/royparsaoran/Roy/PlayGround/edot/product-se/internal/repositories/internal/warehouse",
+    "last_opened_file_path": "/Users/royparsaoran/Roy/PlayGround/edot/product-se/internal/repositories/internal/product",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm"
@@ -90,8 +69,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/internal/repositories/internal/warehouse" />
       <recent name="$PROJECT_DIR$/internal/repositories/internal/product" />
+      <recent name="$PROJECT_DIR$/internal/repositories/internal/warehouse" />
       <recent name="$PROJECT_DIR$/internal/router" />
       <recent name="$PROJECT_DIR$/internal/ucase" />
       <recent name="$PROJECT_DIR$/internal/service" />

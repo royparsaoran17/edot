@@ -42,3 +42,17 @@ func (r *WarehouseCreateMoveStock) Validate() error {
 		"notes":             validation.Validate(&r.Notes, validation.Required),
 	}.Filter()
 }
+
+type WarehouseStock struct {
+	ID        string `json:"id"`
+	ProductID string `json:"product_id"`
+	Quantity  int    `json:"quantity"`
+}
+
+func (r *WarehouseStock) Validate() error {
+	return validation.Errors{
+		"id":         validation.Validate(&r.ID, validation.Required),
+		"product_id": validation.Validate(&r.ProductID, validation.Required),
+		"quantity":   validation.Validate(&r.Quantity, validation.Required),
+	}.Filter()
+}
