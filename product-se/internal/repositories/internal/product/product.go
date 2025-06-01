@@ -1,12 +1,14 @@
 package product
 
-import "product-se/pkg/postgres"
+import (
+	"product-se/pkg/databasex"
+)
 
 type product struct {
-	db postgres.Adapter
+	db databasex.Adapter
 }
 
-func NewProduct(db postgres.Adapter) *product {
+func NewProduct(db databasex.Adapter) *product {
 	return &product{
 		db: db,
 	}

@@ -150,7 +150,7 @@ func (rtr *router) Route() *routerkit.Router {
 
 	// open tracer setup
 	bootstrap.RegistryOpenTracing(rtr.config)
-	db := bootstrap.RegistryPostgres(rtr.config.WriteDB)
+	db := bootstrap.RegistryDatabase(rtr.config.WriteDB)
 
 	// repositories
 	repo := repositories.NewRepository(db)

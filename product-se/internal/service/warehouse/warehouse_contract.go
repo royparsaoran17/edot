@@ -15,4 +15,5 @@ type Warehouse interface {
 	CreateWarehouse(ctx context.Context, input presentations.WarehouseCreate) (*entity.Warehouse, error)
 	AddWarehouseStock(ctx context.Context, input presentations.WarehouseStock) (*entity.ProductStock, error)
 	DeductWarehouseStock(ctx context.Context, input presentations.WarehouseStock) (*entity.ProductStock, error)
+	MoveWarehouseStock(ctx context.Context, input presentations.WarehouseCreateMoveStock) error
 }

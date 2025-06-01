@@ -4,8 +4,7 @@ import "time"
 
 const (
 	connStringMysqlTemplate = "%s:%s@tcp(%s:%d)/%s?%s"
-	//connStringPostgresTemplate = "%s:%s@%s:%d/%s?%s"
-	connStringPostgresTemplate = "postgres://%s/%s?%s"
+	connStringPostgresTemplate = "postgres://%s:%s@%s:%d/%s?%s"
 )
 
 var (
@@ -22,6 +21,7 @@ type (
 		User         string
 		Password     string
 		Name         string
+		Timeout      int
 		Charset      string
 		MaxOpenConns int
 		MaxIdleConns int
@@ -29,8 +29,5 @@ type (
 		Type         string
 		TimeZone     string
 		Driver       string
-		DialTimeout  time.Duration
-		ReadTimeout  time.Duration
-		WriteTimeout time.Duration
 	}
 )

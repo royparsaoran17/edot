@@ -5,15 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83df1fc7-9655-4004-b628-f7e25079cc5b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../product-se/internal/repositories/internal/product/product_get_stock_detail.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../product-se/internal/repositories/repooption/tx_options.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../product-se/internal/ucase/warehouse/warehouse_add_stock.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../product-se/internal/ucase/warehouse/warehouse_deduct_stock.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../product-se/internal/ucase/warehouse/warehouse_move_stock.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../product-se/pkg/databasex/error.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../product-se/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../product-se/internal/consts/error.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/internal/consts/error.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../product-se/internal/presentations/warehouse.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/internal/presentations/warehouse.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../product-se/internal/repositories/contract_repo.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/internal/repositories/contract_repo.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../product-se/internal/repositories/internal/product/product_stock_movement_by_product_id.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/internal/repositories/internal/product/product_stock_movement_by_product_id.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/internal/repositories/db_tx.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/internal/repositories/internal/product/product.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/internal/repositories/internal/product/product.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/internal/repositories/internal/product/product_create.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/internal/repositories/internal/product/product_create.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/internal/repositories/internal/product/product_create_stock.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/internal/repositories/internal/product/product_create_stock.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/internal/repositories/internal/product/product_update.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/internal/repositories/internal/product/product_update.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/internal/repositories/internal/product/product_update_stock.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/internal/repositories/internal/product/product_update_stock.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/internal/repositories/internal/warehouse/warehouse.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/internal/repositories/internal/warehouse/warehouse.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/internal/repositories/internal/warehouse/warehouse_create.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/internal/repositories/internal/warehouse/warehouse_create.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/internal/repositories/internal/warehouse/warehouse_create_move_stock.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/internal/repositories/internal/warehouse/warehouse_create_move_stock.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/internal/repositories/internal/warehouse/warehouse_update.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/internal/repositories/internal/warehouse/warehouse_update.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/internal/repositories/options/options_repo.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/internal/repositories/repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/internal/repositories/repository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/internal/repositories/storer.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/internal/router/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/internal/router/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/internal/router/router_warehouse.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/internal/router/router_warehouse.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../product-se/internal/service/warehouse/warehouse_contract.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/internal/service/warehouse/warehouse_contract.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../product-se/internal/service/warehouse/warehouse_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/internal/service/warehouse/warehouse_service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../product-se/internal/ucase/product/product_get_all.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/internal/ucase/product/product_get_all.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/pkg/databasex/connection.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/pkg/databasex/connection.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/pkg/databasex/contract.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/pkg/databasex/contract.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/pkg/databasex/databasex.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/pkg/databasex/databasex.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/pkg/databasex/db_multi.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/pkg/databasex/db_multi.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/pkg/databasex/db_single.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/pkg/databasex/db_single.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/pkg/databasex/migration.go" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/pkg/databasex/migration.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/pkg/databasex/mysql.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-se/pkg/databasex/postgre.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

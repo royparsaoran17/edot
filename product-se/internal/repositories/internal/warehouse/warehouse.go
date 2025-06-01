@@ -1,12 +1,14 @@
 package warehouse
 
-import "product-se/pkg/postgres"
+import (
+	"product-se/pkg/databasex"
+)
 
 type warehouse struct {
-	db postgres.Adapter
+	db databasex.Adapter
 }
 
-func NewWarehouse(db postgres.Adapter) *warehouse {
+func NewWarehouse(db databasex.Adapter) *warehouse {
 	return &warehouse{
 		db: db,
 	}

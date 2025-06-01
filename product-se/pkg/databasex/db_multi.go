@@ -66,3 +66,12 @@ func (db *dbMulti) QueryRowX(ctx context.Context, query string, args ...any) *sq
 func (db *dbMulti) Transact(ctx context.Context, iso sql.IsolationLevel, txFunc func(*DB) error) (err error) {
 	return db.dbWrite.Transact(ctx, iso, txFunc)
 }
+
+// BeginTx start new transaction session
+func (db *dbMulti) BeginTx(ctx context.Context, opts *sql.TxOptions) (*sql.Tx, error) {
+	return db.BeginTx(ctx, opts)
+}
+
+func (db *dbMulti) ParseSQLError(err error) error {
+	return db.dbRead.ParseSQLError(err)
+}

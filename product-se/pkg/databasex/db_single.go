@@ -3,12 +3,14 @@ package databasex
 import (
 	"context"
 	"database/sql"
+	"database/sql/driver"
 	"errors"
 	"fmt"
+	"github.com/lib/pq"
+	"product-se/pkg/tracer"
+	"product-se/pkg/util"
 
 	"github.com/jmoiron/sqlx"
-
-	"product-se/pkg/tracer"
 )
 
 var (
@@ -52,6 +54,7 @@ func (db *DB) Exec(ctx context.Context, query string, args ...any) (_ int64, err
 	ctx = tracer.DBSpanStartWithOption(ctx, db.dbName, "exec",
 		tracer.WithResourceNameOptions(query),
 		tracer.WithOptions("sql.query", query),
+		tracer.WithOptions("sql.args", util.DumpToString(args)),
 	)
 	defer tracer.SpanFinish(ctx)
 	if db.reaMode {
@@ -84,6 +87,7 @@ func (db *DB) Query(ctx context.Context, dst any, query string, args ...any) err
 	ctx = tracer.DBSpanStartWithOption(ctx, db.dbName, "query",
 		tracer.WithResourceNameOptions(query),
 		tracer.WithOptions("sql.query", query),
+		tracer.WithOptions("sql.args", util.DumpToString(args)),
 	)
 	defer tracer.SpanFinish(ctx)
 	if db.tx != nil {
@@ -94,10 +98,11 @@ func (db *DB) Query(ctx context.Context, dst any, query string, args ...any) err
 }
 
 // QueryRow runs the query and returns a single row.
-func (db *DB) QueryRow(ctx context.Context, dst any, query string, args ...any) error {
+func (db *DB) QueryRow(ctx context.Context, dst interface{}, query string, args ...any) error {
 	ctx = tracer.DBSpanStartWithOption(ctx, db.dbName, "query_row",
 		tracer.WithResourceNameOptions(query),
 		tracer.WithOptions("sql.query", query),
+		tracer.WithOptions("sql.args", util.DumpToString(args)),
 	)
 	defer tracer.SpanFinish(ctx)
 
@@ -113,6 +118,7 @@ func (db *DB) QueryX(ctx context.Context, query string, args ...any) (*sql.Rows,
 	ctx = tracer.DBSpanStartWithOption(ctx, db.dbName, "queryx",
 		tracer.WithResourceNameOptions(query),
 		tracer.WithOptions("sql.query", query),
+		tracer.WithOptions("sql.args", util.DumpToString(args)),
 	)
 	defer tracer.SpanFinish(ctx)
 	if db.tx != nil {
@@ -127,6 +133,7 @@ func (db *DB) QueryRowX(ctx context.Context, query string, args ...any) *sql.Row
 	ctx = tracer.DBSpanStartWithOption(ctx, db.dbName, "query_rowx",
 		tracer.WithResourceNameOptions(query),
 		tracer.WithOptions("sql.query", query),
+		tracer.WithOptions("sql.args", util.DumpToString(args)),
 	)
 	defer tracer.SpanFinish(ctx)
 	if db.tx != nil {
@@ -188,8 +195,51 @@ func (db *DB) transact(ctx context.Context, opts *sql.TxOptions, txFunc func(*DB
 
 	if err := txFunc(dbtx); err != nil {
 		tx.Rollback()
-		return fmt.Errorf("fn(tx): %w", err)
+		return err
 	}
 
 	return tx.Commit()
+}
+
+// BeginTx start new transaction session
+func (db *DB) BeginTx(ctx context.Context, opts *sql.TxOptions) (*sql.Tx, error) {
+	ctx = tracer.DBSpanStartWithOption(ctx, "name", "begin.transaction")
+
+	defer tracer.SpanFinish(ctx)
+
+	return db.db.BeginTx(ctx, opts)
+}
+
+func (db *DB) ParseSQLError(err error) error {
+	const canceledMessage = "pq: canceling statement due to user request"
+
+	switch err {
+	case sql.ErrNoRows:
+		return NoRowsFound
+	case driver.ErrBadConn:
+		return context.DeadlineExceeded
+	}
+
+	switch et := err.(type) {
+	case *pq.Error:
+		switch et.Code {
+		case "02000":
+			return NoRowsFound
+		case "23503":
+			return ForeignKeyViolation
+		case "23505":
+			return UniqueViolation
+		case "42P01":
+			return UndefinedTable
+		case "22004":
+			return NullValueNotAllowed
+		}
+	}
+
+	switch err.Error() {
+	case canceledMessage:
+		return context.DeadlineExceeded
+	}
+
+	return err
 }

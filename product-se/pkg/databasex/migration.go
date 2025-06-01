@@ -6,13 +6,13 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strings"
+	"product-se/pkg/logger"
 
 	"github.com/go-sql-driver/mysql"
-	_ "github.com/go-sql-driver/mysql"
 	"github.com/pressly/goose/v3"
 
-	"product-se/pkg/logger"
+	_ "github.com/go-sql-driver/mysql"
+	_ "github.com/ziutek/mymysql/godrv"
 )
 
 var (
@@ -22,7 +22,6 @@ var (
 	verbose = flags.Bool("verbose", false, "enable verbose mode")
 	help    = flags.Bool("guide", false, "print help")
 	version = flags.Bool("version", false, "print version")
-	dsnParm = flags.String("dsn", "", "database dsn")
 )
 
 func DatabaseMigration(cfg *Config) {
@@ -31,7 +30,7 @@ func DatabaseMigration(cfg *Config) {
 	flags.Parse(os.Args[2:])
 
 	if *version {
-		fmt.Println(goose.MaxVersion)
+		fmt.Println(goose.VERSION)
 		return
 	}
 	if *verbose {
@@ -69,18 +68,12 @@ func DatabaseMigration(cfg *Config) {
 
 	//dbstring := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?parseTime=true", cfg.User, cfg.Password, cfg.Host, cfg.Port, cfg.Name)
 
-	dbStringCon := *dsnParm
-
-	if strings.Trim(dbStringCon, "") == "" {
-		fn, ok := dsn[cfg.Driver]
-		if !ok {
-			logger.Fatal(fmt.Sprintf("invalid driver %s", cfg.Driver))
-		}
-
-		dbStringCon = fn(cfg)
+	fn, ok := dsn[cfg.Driver]
+	if !ok {
+		logger.Fatal(fmt.Sprintf("invalid driver %s", cfg.Driver))
 	}
 
-	db, err := goose.OpenDBWithDriver(cfg.Driver, dbStringCon)
+	db, err := goose.OpenDBWithDriver(cfg.Driver, fn(cfg))
 
 	if err != nil {
 		logger.Fatal(err)
@@ -112,7 +105,6 @@ var (
   --table string   migrations table name (default "db_migration")
   --verbose        enable verbose mode
   --version        print version
-  --dsn 		   database dsn
 
 Commands:
     up                   Migrate the DB to the most recent version available

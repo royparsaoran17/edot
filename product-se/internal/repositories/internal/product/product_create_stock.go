@@ -3,6 +3,7 @@ package product
 import (
 	"context"
 	"database/sql"
+	"product-se/internal/repositories/repooption"
 	"time"
 
 	"product-se/internal/consts"
@@ -13,12 +14,27 @@ import (
 	"product-se/internal/presentations"
 )
 
-func (r product) CreateProductStock(ctx context.Context, input presentations.ProductCreateStock) error {
-	tx, err := r.db.BeginTx(ctx, &sql.TxOptions{Isolation: sql.LevelRepeatableRead})
-	if err != nil {
-		return errors.Wrap(err, "failed begin tx")
+func (r product) CreateProductStock(ctx context.Context, input presentations.ProductCreateStock, opts ...repooption.TxOption) error {
+
+	txOpt := repooption.TxOptions{
+		Tx:              nil,
+		NotCommitInRepo: false,
 	}
 
+	for _, opt := range opts {
+		opt(&txOpt)
+	}
+
+	if txOpt.Tx == nil {
+		tx, err := r.db.BeginTx(ctx, &sql.TxOptions{Isolation: sql.LevelRepeatableRead})
+		if err != nil {
+			return errors.Wrap(err, "beginTx")
+		}
+
+		txOpt.Tx = tx
+	}
+
+	tx := txOpt.Tx
 	tNow := time.Now().Local()
 
 	query := `
@@ -39,12 +55,12 @@ func (r product) CreateProductStock(ctx context.Context, input presentations.Pro
 		tNow,
 	}
 
-	if _, err := r.db.ExecTx(ctx, tx, query, values...); err != nil {
-		errRollback := r.db.RollbackTx(ctx, tx)
-		if errRollback != nil {
-			return errors.Wrap(err, "rollback failed")
+	if _, err := tx.ExecContext(ctx, query, values...); err != nil {
+		if !txOpt.NotCommitInRepo {
+			if err := tx.Rollback(); err != nil {
+				err = errors.Wrap(err, "rollback")
+			}
 		}
-
 		errSql := r.db.ParseSQLError(err)
 
 		if errSql != nil {
@@ -59,9 +75,11 @@ func (r product) CreateProductStock(ctx context.Context, input presentations.Pro
 
 	}
 
-	if err := r.db.CommitTx(ctx, tx); err != nil {
-		return errors.Wrap(err, "failed to commit transaction")
+	if !txOpt.NotCommitInRepo {
+		err := tx.Commit()
+		if err != nil {
+			return errors.Wrap(err, "commit add chopper")
+		}
 	}
-
 	return nil
 }

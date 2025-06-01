@@ -29,4 +29,19 @@ func (rtr *router) mountWarehouses(warehouseSvc warehousesvc.Warehouse) {
 		warehouse.NewWarehouseUpdate(warehouseSvc),
 	)).Methods(http.MethodPut)
 
+	rtr.router.HandleFunc("/internal/v1/warehouses/{warehouse_id}/add-stock", rtr.handle(
+		handler.HttpRequest,
+		warehouse.NewWarehouseAddStock(warehouseSvc),
+	)).Methods(http.MethodPost)
+
+	rtr.router.HandleFunc("/internal/v1/warehouses/{warehouse_id}/deduct-stock", rtr.handle(
+		handler.HttpRequest,
+		warehouse.NewWarehouseDeductStock(warehouseSvc),
+	)).Methods(http.MethodPost)
+
+	rtr.router.HandleFunc("/internal/v1/warehouses/{warehouse_id}/move-stock", rtr.handle(
+		handler.HttpRequest,
+		warehouse.NewWarehouseMoveStock(warehouseSvc),
+	)).Methods(http.MethodPost)
+
 }

@@ -29,7 +29,7 @@ type WarehouseCreateMoveStock struct {
 	ProductID       string `db:"product_id,omitempty" json:"product_id"`
 	FromWarehouseID string `db:"from_warehouse_id,omitempty" json:"from_warehouse_id"`
 	ToWarehouseID   string `db:"to_warehouse_id,omitempty" json:"to_warehouse_id"`
-	Quantity        string `db:"quantity,omitempty" json:"quantity"`
+	Quantity        int    `db:"quantity,omitempty" json:"quantity"`
 	Notes           string `db:"notes,omitempty" json:"notes"`
 }
 
