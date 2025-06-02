@@ -52,10 +52,10 @@ func (c user) FindUserByID(ctx context.Context, userID string) (*entity.UserDeta
 		}
 	}
 
-	var role entity.UserDetail
-	if err := json.Unmarshal(b, &role); err != nil {
+	var user entity.UserDetail
+	if err := json.Unmarshal(b, &user); err != nil {
 		return nil, errors.Wrap(err, "failed to unmarshal byte to user")
 	}
 
-	return &role, nil
+	return &user, nil
 }

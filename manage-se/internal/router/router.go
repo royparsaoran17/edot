@@ -11,6 +11,7 @@ import (
 	"manage-se/internal/presentations"
 	"manage-se/internal/provider"
 	"manage-se/internal/service/auth"
+	"manage-se/internal/service/order"
 	"manage-se/internal/service/role"
 	"manage-se/internal/service/user"
 	"manage-se/pkg/httpclientx"
@@ -167,9 +168,10 @@ func (rtr *router) Route() *routerkit.Router {
 
 	// initiate services
 	var (
-		authService = auth.NewService(provider, rdb)
-		roleService = role.NewService(provider)
-		userService = user.NewService(provider)
+		authService  = auth.NewService(provider, rdb)
+		roleService  = role.NewService(provider)
+		userService  = user.NewService(provider)
+		orderService = order.NewService(provider)
 	)
 
 	// healthy
@@ -180,6 +182,7 @@ func (rtr *router) Route() *routerkit.Router {
 
 	rtr.mountAuth(authService)
 	rtr.mountRole(roleService)
+	rtr.mountOrder(orderService, authService)
 	rtr.mountUser(userService, authService)
 
 	return rtr.router

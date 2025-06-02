@@ -29,7 +29,7 @@ func (s *service) Login(ctx context.Context, input presentations.Login) (*user.U
 		return nil, errors.Wrap(err, "validation(s) error")
 	}
 
-	auth, err := s.provider.Auth.Login(ctx, input)
+	auth, err := s.provider.User.Login(ctx, input)
 	if err != nil {
 		return nil, errors.Wrap(err, "provider error")
 	}
@@ -43,7 +43,7 @@ func (s *service) Register(ctx context.Context, input presentations.Register) (*
 	}
 
 	password := common.RandomString(10)
-	user, err := s.provider.Auth.CreateUser(ctx, presentations.UserCreate{
+	user, err := s.provider.User.CreateUser(ctx, presentations.UserCreate{
 		ID:       uuid.NewString(),
 		Name:     input.Name,
 		Phone:    input.Phone,
@@ -70,7 +70,7 @@ func (s *service) VerifyToken(ctx context.Context, input presentations.Verify) (
 		switch err {
 		case redis.Nil:
 
-			verify, err := s.provider.Auth.Verify(ctx, input)
+			verify, err := s.provider.User.Verify(ctx, input)
 			if err != nil {
 				return nil, errors.Wrap(err, "provider error")
 			}

@@ -1,6 +1,6 @@
 app:
   name: manage-se
-  port: 3002
+  port: 3005
   timezone: ${APP_TIMEZONE}
   debug: ${APP_DEBUG}
   env: ${APP_ENV} # dev | stg | prod
@@ -15,10 +15,10 @@ logger:
   level: "info" # trace | debug | info | warn | error | fatal | panic
 
 provider:
-  auth:
+  user:
     base_url: "http://localhost:3001"
-  wallet:
-    base_url: "http://localhost:3003"
+  order:
+    base_url: "http://localhost:3005"
 
 apm:
   address: "${APM_ADDRESS}"
@@ -49,7 +49,7 @@ db_write:
   driver: postgres
   host: 127.0.0.1
   port: 5432
-  name: manage-se # database name
+  name: order-db # database name
   user: postgres # database user
   pass: postgres  # database password
   max_open: 50
@@ -64,7 +64,7 @@ db_read:
   driver: postgres
   host: 127.0.0.1
   port: 5432
-  name: manage-se # database name
+  name: order-db # database name
   user: postgres # database user
   pass: postgres # database password
   max_open: 50

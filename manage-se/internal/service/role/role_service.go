@@ -17,7 +17,7 @@ func NewService(provider *provider.Provider) Role {
 }
 
 func (s *service) GetAllRole(ctx context.Context) ([]user.Role, error) {
-	roles, err := s.provider.Auth.GetListRoles(ctx)
+	roles, err := s.provider.User.GetListRoles(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "getting all roles on ")
 	}

@@ -1,7 +1,7 @@
 version: '3.9'
 
 services:
-  user-db:
+  order-db:
     image: postgres:14-alpine
     restart: unless-stopped
     ports:
@@ -9,47 +9,7 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=user-db
-
-  product-db:
-    image: postgres:14-alpine
-    restart: unless-stopped
-    ports:
-      - 5433:5432
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=product-se
-
-  order-db:
-    image: postgres:14-alpine
-    restart: unless-stopped
-    ports:
-      - 5434:5432
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=order-se
-
-  shop-db:
-    image: postgres:14-alpine
-    restart: unless-stopped
-    ports:
-      - 5434:5432
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=shop-se
-      
-  warehouse-db:
-    image: postgres:14-alpine
-    restart: unless-stopped
-    ports:
-      - 5434:5432
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=warehouse-se
+      - POSTGRES_DB=order-db
 
   redis:
     image: redis:6.2-alpine

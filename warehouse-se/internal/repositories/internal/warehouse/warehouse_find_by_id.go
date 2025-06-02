@@ -14,6 +14,7 @@ func (r warehouse) FindWarehouseByID(ctx context.Context, warehouseID string) (*
 SELECT 
     id, 
     name, 
+    shop_id,
     is_active, 
     created_at::timestamptz,
     updated_at::timestamptz, 

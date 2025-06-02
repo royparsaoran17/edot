@@ -10,7 +10,7 @@ import (
 
 type Shop interface {
 	GetAllShop(ctx context.Context, meta *common.Metadata) ([]entity.Shop, error)
-	GetShopByID(ctx context.Context, shopID string) (*entity.Shop, error)
+	GetShopByID(ctx context.Context, shopID string) (*entity.ShopDetail, error)
 	UpdateShopByID(ctx context.Context, shopID string, input presentations.ShopUpdate) error
 	CreateShop(ctx context.Context, input presentations.ShopCreate) (*entity.Shop, error)
 }

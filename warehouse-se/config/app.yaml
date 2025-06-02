@@ -1,6 +1,6 @@
 app:
-  name: user-se
-  port: 3001
+  name: warehouse-se
+  port: 3002
   timezone: ${APP_TIMEZONE}
   debug: ${APP_DEBUG}
   env: ${APP_ENV} # dev | stg | prod
@@ -43,7 +43,7 @@ db_write:
   driver: postgres
   host: 127.0.0.1
   port: 5432
-  name: product-db # database name
+  name: order-db # database name
   user: postgres # database user
   pass: postgres  # database password
   max_open: 50
@@ -58,7 +58,7 @@ db_read:
   driver: postgres
   host: 127.0.0.1
   port: 5432
-  name: product-db # database name
+  name: order-db # database name
   user: postgres # database user
   pass: postgres # database password
   max_open: 50

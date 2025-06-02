@@ -4,7 +4,7 @@ import (
 	"context"
 	"manage-se/internal/common"
 	"manage-se/internal/presentations"
-	"manage-se/internal/provider/product"
+	"manage-se/internal/provider/order"
 	"manage-se/internal/provider/user"
 )
 
@@ -19,10 +19,9 @@ type User interface {
 	CreateRole(ctx context.Context, input presentations.RoleCreate) (*user.Role, error)
 }
 
-type Product interface {
-	CreateProduct(ctx context.Context, input presentations.ProductCreate) (*product.Product, error)
-	GetListProducts(ctx context.Context, meta *common.Metadata) ([]product.Product, error)
-
-	CreateWarehouse(ctx context.Context, input presentations.WarehouseCreate) (*product.Warehouse, error)
-	GetListWarehouses(ctx context.Context, meta *common.Metadata) ([]product.Warehouse, error)
+type Order interface {
+	CreateOrderPayment(ctx context.Context, orderID string, input presentations.PaymentCreate) (*order.Order, error)
+	CreateOrder(ctx context.Context, input presentations.OrderCreate) (*order.Order, error)
+	GetOrderByID(ctx context.Context, orderID string) (*order.OrderDetail, error)
+	GetListOrders(ctx context.Context, userID string, meta *common.Metadata) ([]order.Order, error)
 }

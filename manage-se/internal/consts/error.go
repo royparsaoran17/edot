@@ -8,7 +8,8 @@ func (e Error) Error() string {
 
 const (
 	ErrWalletAlreadyExist = Error("wallet already exist")
-	ErrWalletNotFound     = Error("wallet not found")
+	ErrDataNotFound       = Error("data not found")
+	ErrOrderNotFound      = Error("order not found")
 
 	ErrTransactionNotFound     = Error("transaction not found")
 	ErrTransactionAlreadyExist = Error("transaction already exist")

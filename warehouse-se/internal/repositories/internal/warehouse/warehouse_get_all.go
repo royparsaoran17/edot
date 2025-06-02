@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 	"github.com/pkg/errors"
+	"strings"
 	"warehouse-se/internal/common"
 	"warehouse-se/internal/entity"
-	"strings"
 )
 
 func (r warehouse) GetAllWarehouse(ctx context.Context, meta *common.Metadata) ([]entity.Warehouse, error) {
@@ -19,6 +19,7 @@ func (r warehouse) GetAllWarehouse(ctx context.Context, meta *common.Metadata) (
 		SELECT 
 			id, 
 			name, 
+    		shop_id,
     		is_active, 
 			created_at::timestamptz,
 			updated_at::timestamptz, 

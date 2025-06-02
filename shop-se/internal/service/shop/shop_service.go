@@ -2,15 +2,12 @@ package shop
 
 import (
 	"context"
-	"database/sql"
 	"github.com/google/uuid"
 	"github.com/pkg/errors"
 	"shop-se/internal/common"
-	"shop-se/internal/consts"
 	"shop-se/internal/entity"
 	"shop-se/internal/presentations"
 	"shop-se/internal/repositories"
-	"shop-se/internal/repositories/repooption"
 )
 
 type service struct {
@@ -30,13 +27,31 @@ func (s *service) GetAllShop(ctx context.Context, meta *common.Metadata) ([]enti
 	return shops, nil
 }
 
-func (s *service) GetShopByID(ctx context.Context, shopID string) (*entity.Shop, error) {
+func (s *service) GetShopByID(ctx context.Context, shopID string) (*entity.ShopDetail, error) {
 	shops, err := s.repo.Shop.FindShopByID(ctx, shopID)
 	if err != nil {
 		return nil, errors.Wrapf(err, "getting shop id %s", shopID)
 	}
 
-	return shops, nil
+	owner, err := s.repo.User.FindUserByID(ctx, shops.OwnerID)
+	if err != nil {
+		return nil, errors.Wrapf(err, "getting shop id %s", shopID)
+	}
+
+	warehouses, err := s.repo.Warehouse.GetAllWarehouse(ctx, shops.ID)
+	if err != nil {
+		return nil, errors.Wrapf(err, "getting shop id %s", shopID)
+	}
+
+	return &entity.ShopDetail{
+		ID:         shops.ID,
+		Name:       shops.Name,
+		OwnerID:    shops.OwnerID,
+		Owner:      *owner,
+		CreatedAt:  shops.CreatedAt,
+		UpdatedAt:  shops.UpdatedAt,
+		Warehouses: warehouses,
+	}, nil
 }
 
 func (s *service) UpdateShopByID(ctx context.Context, shopID string, input presentations.ShopUpdate) error {

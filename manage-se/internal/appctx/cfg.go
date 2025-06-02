@@ -277,14 +277,14 @@ type (
 )
 
 type Provider struct {
-	User    User    `yaml:"user" json:"user"`
-	Product Product `yaml:"product" json:"product"`
+	User  User  `yaml:"user" json:"user"`
+	Order Order `yaml:"order" json:"order"`
 }
 
 type User struct {
 	BaseURL string `yaml:"base_url" json:"base_url"`
 }
 
-type Product struct {
+type Order struct {
 	BaseURL string `yaml:"base_url" json:"base_url"`
 }

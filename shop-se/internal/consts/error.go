@@ -11,6 +11,7 @@ const (
 	ErrShopAlreadyExist    = Error("shop already exist")
 	ErrShopStockEmpty      = Error("shop stock is not empty")
 	ErrShopNotFound        = Error("shop not found")
+	ErrUserNotFound        = Error("user not found")
 
 	ErrWrongPassword     = Error("wrong password")
 	ErrPhoneAlreadyExist = Error("phone already exist")
