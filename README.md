@@ -27,6 +27,36 @@ This project consists of multiple microservices that work together in a modular 
 
 ---
 
+## Project Structure and Boilerplate
+Each service follows the same project structure with a clear separation of concerns. The main layers are:
+router → usecase → service → repository
+
+### 🔹 Router
+
+- Located at:  
+  `internal/router/router.go`
+- Responsible for defining HTTP routes and connecting them to the appropriate usecase.
+
+### 🔹 Usecase
+
+- Acts as the business logic coordinator.
+- Receives requests from the router and delegates work to the service layer.
+
+### 🔹 Service
+
+- Contains domain-specific logic and processing.
+- Handles validations, aggregations, and orchestrations before calling the repository.
+
+### 🔹 Repository
+
+- Responsible for database interactions.
+- Implements low-level CRUD operations using SQL or an ORM/DB client.
+
+This layered architecture improves readability, testability, and separation of concerns.
+
+---
+
+
 ## How to Run the Services
 
 Make sure dependencies are up and running via `docker-compose up -d` before starting any service.
