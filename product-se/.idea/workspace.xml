@@ -5,41 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83df1fc7-9655-4004-b628-f7e25079cc5b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../manage-se/internal/presentations/product.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../manage-se/internal/presentations/warehouse.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../manage-se/internal/provider/product/warehouse_create.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../manage-se/internal/provider/product/warehouse_entity.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../manage-se/internal/provider/product/warehouse_get_list.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shop-se/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shop-se/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shop-se/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shop-se/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shop-se/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warehouse-se/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warehouse-se/internal/repositories/internal/product/product.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warehouse-se/internal/repositories/internal/product/product_find_by_id.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../manage-se/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../manage-se/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../manage-se/internal/appctx/cfg.go" beforeDir="false" afterPath="$PROJECT_DIR$/../manage-se/internal/appctx/cfg.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../manage-se/internal/entity/customer.go" beforeDir="false" afterPath="$PROJECT_DIR$/../manage-se/internal/entity/customer.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../manage-se/internal/middleware/auth_middleware.go" beforeDir="false" afterPath="$PROJECT_DIR$/../manage-se/internal/middleware/auth_middleware.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../manage-se/internal/presentations/auth.go" beforeDir="false" afterPath="$PROJECT_DIR$/../manage-se/internal/presentations/auth.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../manage-se/internal/presentations/customer.go" beforeDir="false" afterPath="$PROJECT_DIR$/../manage-se/internal/presentations/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../manage-se/internal/presentations/transaction.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../manage-se/internal/presentations/wallet.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../manage-se/internal/provider/auth/auth.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../manage-se/internal/provider/auth/auth_create_role.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../manage-se/internal/provider/auth/auth_create_user.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../manage-se/internal/provider/auth/auth_entity.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../manage-se/internal/provider/auth/auth_get_list_roles.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../manage-se/internal/provider/auth/auth_get_list_user.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../manage-se/internal/provider/auth/auth_login.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../manage-se/internal/provider/auth/auth_meta.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../manage-se/internal/provider/auth/auth_vefify.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../manage-se/internal/provider/contract.go" beforeDir="false" afterPath="$PROJECT_DIR$/../manage-se/internal/provider/contract.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../manage-se/internal/provider/provider.go" beforeDir="false" afterPath="$PROJECT_DIR$/../manage-se/internal/provider/provider.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../manage-se/internal/repositories/contract.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../manage-se/internal/repositories/contract_repo.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../manage-se/internal/repositories/repooption/tx_options.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../manage-se/internal/repositories/repository.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../manage-se/internal/service/auth/auth_contract.go" beforeDir="false" afterPath="$PROJECT_DIR$/../manage-se/internal/service/auth/auth_contract.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../manage-se/internal/service/auth/auth_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/../manage-se/internal/service/auth/auth_service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../manage-se/internal/service/role/role_contract.go" beforeDir="false" afterPath="$PROJECT_DIR$/../manage-se/internal/service/role/role_contract.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../manage-se/internal/service/role/role_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/../manage-se/internal/service/role/role_service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../manage-se/internal/service/user/customer_contract.go" beforeDir="false" afterPath="$PROJECT_DIR$/../manage-se/internal/service/user/customer_contract.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../manage-se/internal/service/user/customer_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/../manage-se/internal/service/user/customer_service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../manage-se/internal/ucase/user/customer_get_all.go" beforeDir="false" afterPath="$PROJECT_DIR$/../manage-se/internal/ucase/user/user_get_all.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../manage-se/pkg/databasex/connection.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../manage-se/pkg/databasex/contract.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../manage-se/pkg/databasex/databasex.go" beforeDir="false" />
@@ -47,8 +25,52 @@
       <change beforePath="$PROJECT_DIR$/../manage-se/pkg/databasex/db_single.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../manage-se/pkg/databasex/error.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../manage-se/pkg/databasex/migration.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/product-se.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/migration/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/migration/db.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migration/20250529053505_create_warehouses_table.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migration/20250529053552_create_product_stocks_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/migration/20250529053552_create_product_stocks_table.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migration/20250529053626_create_stock_movements_table.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migration/20250529053835_seed_warehouse_table.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/bootstrap/database.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/bootstrap/database.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/presentations/warehouse.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/presentations/warehouse.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repositories/contract_repo.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repositories/contract_repo.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repositories/internal/product/product_find_by_id.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repositories/internal/product/product_find_by_id.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repositories/internal/product/product_get_all.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repositories/internal/product/product_get_all.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repositories/internal/product/product_get_stock.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repositories/internal/product/product_get_stock.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repositories/internal/product/product_get_stock_detail.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repositories/internal/product/product_get_stock_detail.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repositories/internal/product/product_stock_movement.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repositories/internal/product/product_stock_movement.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repositories/internal/product/product_stock_movement_by_product_id.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repositories/internal/product/product_stock_movement_by_product_id.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repositories/internal/warehouse/warehouse.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repositories/internal/warehouse/warehouse_create.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repositories/internal/warehouse/warehouse_create_move_stock.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repositories/internal/warehouse/warehouse_find_by_id.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repositories/internal/warehouse/warehouse_get_all.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repositories/internal/warehouse/warehouse_get_stock.go" beforeDir="false" afterPath="$PROJECT_DIR$/../warehouse-se/internal/repositories/internal/product/product_get_stock_detail.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repositories/internal/warehouse/warehouse_update.go" beforeDir="false" afterPath="$PROJECT_DIR$/../warehouse-se/internal/repositories/internal/product/product_update_stock.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repositories/repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repositories/repository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/router/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/router/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/router/router_warehouse.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/service/warehouse/warehouse_contract.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/service/warehouse/warehouse_service.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/ucase/warehouse/warehouse_add_stock.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/ucase/warehouse/warehouse_create.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/ucase/warehouse/warehouse_deduct_stock.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/ucase/warehouse/warehouse_get_all.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/ucase/warehouse/warehouse_get_by_id.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/ucase/warehouse/warehouse_move_stock.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/ucase/warehouse/warehouse_update.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/databasex/connection.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/databasex/contract.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/databasex/databasex.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/databasex/db_multi.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/databasex/db_single.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/databasex/error.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/databasex/migration.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/structgen/schema.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/structgen/schema.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shop-se/internal/router/router_shop.go" beforeDir="false" afterPath="$PROJECT_DIR$/../shop-se/internal/router/router_shop.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../user-se/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../user-se/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-se/database/migration/20231016193453_seed_user_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../user-se/database/migration/20231016193453_seed_user_table.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,30 +99,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultGoTemplateProperty": "Go File",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.GoLinterPluginOnboarding": "true",
-    "RunOnceActivity.GoLinterPluginStorageMigration": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
-    "RunOnceActivity.go.vendoring.notification.had.been.shown": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "go.import.settings.migrated": "true",
-    "go.sdk.automatically.set": "true",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/Users/royparsaoran/Roy/PlayGround/edot/product-se/internal/ucase/warehouse",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.GoLinterPluginOnboarding&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.GoLinterPluginStorageMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.vendoring.notification.had.been.shown&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/royparsaoran/Roy/PlayGround/edot/product-se&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/internal/ucase/warehouse" />

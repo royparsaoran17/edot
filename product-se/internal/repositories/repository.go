@@ -4,20 +4,17 @@ import (
 	"context"
 	"database/sql"
 	"product-se/internal/repositories/internal/product"
-	"product-se/internal/repositories/internal/warehouse"
 	"product-se/pkg/databasex"
 )
 
 type Repository struct {
-	Product   Product
-	Warehouse Warehouse
-	db        databasex.Adapter
+	Product Product
+	db      databasex.Adapter
 }
 
 func NewRepository(db databasex.Adapter) *Repository {
 	return &Repository{
-		Product:   product.NewProduct(db),
-		Warehouse: warehouse.NewWarehouse(db),
+		Product: product.NewProduct(db),
 	}
 }
 

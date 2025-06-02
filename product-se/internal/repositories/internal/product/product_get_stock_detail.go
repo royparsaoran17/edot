@@ -58,7 +58,7 @@ func (r product) GetStockDetail(ctx context.Context, productID, warehouseID stri
         AND s.deleted_at is null;`
 
 	var b []byte
-	err := r.db.QueryRow(ctx, query, productID, warehouseID).Scan(&b)
+	err := r.db.QueryRow(ctx, &b, query, productID, warehouseID)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to fetch stock from db")
 	}

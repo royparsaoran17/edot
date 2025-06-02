@@ -17,7 +17,6 @@ func MigrateDatabase() {
 		User:         cfg.WriteDB.User,
 		Password:     cfg.WriteDB.Pass,
 		Charset:      cfg.WriteDB.Charset,
-		DialTimeout:  cfg.WriteDB.DialTimeout,
 		MaxIdleConns: cfg.WriteDB.MaxIdle,
 		MaxOpenConns: cfg.WriteDB.MaxOpen,
 		MaxLifetime:  cfg.WriteDB.MaxLifeTime,

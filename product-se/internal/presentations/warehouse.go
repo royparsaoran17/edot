@@ -5,7 +5,8 @@ import (
 )
 
 type WarehouseUpdate struct {
-	Name string `json:"name"`
+	Name     string `json:"name"`
+	IsActive bool   `json:"is_active"`
 }
 
 func (r *WarehouseUpdate) Validate() error {
@@ -15,8 +16,9 @@ func (r *WarehouseUpdate) Validate() error {
 }
 
 type WarehouseCreate struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
+	ID       string `json:"id"`
+	Name     string `json:"name"`
+	IsActive bool   `json:"is_active"`
 }
 
 func (r *WarehouseCreate) Validate() error {

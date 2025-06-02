@@ -3,8 +3,8 @@ package product
 import (
 	"context"
 	"database/sql"
-	"product-se/internal/consts"
-	"product-se/internal/entity"
+	"warehouse-se/internal/consts"
+	"warehouse-se/internal/entity"
 
 	"github.com/pkg/errors"
 )

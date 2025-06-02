@@ -4,8 +4,6 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
-	"time"
-
 	"product-se/pkg/databasex"
 )
 
@@ -46,14 +44,13 @@ var (
 func getSchema(tableName string) []ColumnSchema {
 
 	db, err := databasex.CreateSession(&databasex.Config{
-		Driver:      config.Driver,
-		Host:        config.DbHost,
-		Port:        config.DbPort,
-		User:        config.DbUser,
-		Password:    config.DbPassword,
-		TimeZone:    config.Timezone,
-		Name:        config.DbName,
-		DialTimeout: 30 * time.Second,
+		Driver:   config.Driver,
+		Host:     config.DbHost,
+		Port:     config.DbPort,
+		User:     config.DbUser,
+		Password: config.DbPassword,
+		TimeZone: config.Timezone,
+		Name:     config.DbName,
 	})
 
 	if err != nil {
@@ -101,14 +98,13 @@ func getSchema(tableName string) []ColumnSchema {
 func listTables() []string {
 
 	db, err := databasex.CreateSession(&databasex.Config{
-		Driver:      config.Driver,
-		Host:        config.DbHost,
-		Port:        config.DbPort,
-		User:        config.DbUser,
-		Password:    config.DbPassword,
-		TimeZone:    config.Timezone,
-		Name:        config.DbName,
-		DialTimeout: 30 * time.Second,
+		Driver:   config.Driver,
+		Host:     config.DbHost,
+		Port:     config.DbPort,
+		User:     config.DbUser,
+		Password: config.DbPassword,
+		TimeZone: config.Timezone,
+		Name:     config.DbName,
 	})
 
 	if err != nil {

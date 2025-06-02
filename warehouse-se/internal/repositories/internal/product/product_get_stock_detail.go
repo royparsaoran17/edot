@@ -4,10 +4,10 @@ import (
 	"context"
 	"encoding/json"
 	"github.com/pkg/errors"
-	"product-se/internal/entity"
+	"warehouse-se/internal/entity"
 )
 
-func (r product) GetStockMovement(ctx context.Context) ([]entity.StockMovement, error) {
+func (r product) GetStockDetail(ctx context.Context, productID, warehouseID string) (*entity.ProductStock, error) {
 	query := `
 	SELECT 
         jsonb_build_object(
@@ -32,8 +32,8 @@ func (r product) GetStockMovement(ctx context.Context) ([]entity.StockMovement, 
                     WHERE s.product_id = p.id
                     AND p.deleted_at is null
             ),
-            'from_warehouse_id', s.from_warehouse_id,
-            'from_warehouse',(
+            'warehouse_id', s.warehouse_id,
+            'warehouse',(
                 SELECT
 					json_build_object(
 						'id', fw.id,
@@ -44,44 +44,29 @@ func (r product) GetStockMovement(ctx context.Context) ([]entity.StockMovement, 
 						'deleted_at', fw.deleted_at::timestamptz
 					)
                 FROM warehouses fw
-                    WHERE s.from_warehouse_id, = fw.id
+                    WHERE s.warehouse_id, = fw.id
                     AND fw.deleted_at is null
             ),
-            'to_warehouse_id', s.to_warehouse_id,
-            'to_warehouse',(
-                SELECT
-					json_build_object(
-						'id', tw.id,
-						'name', tw.name,
-						'is_active', tw.is_active,
-						'created_at', tw.created_at::timestamptz,
-						'updated_at', tw.updated_at::timestamptz,
-						'deleted_at', tw.deleted_at::timestamptz
-					)
-                FROM warehouses tw
-                    WHERE s.to_warehouse, = tw.id
-                    AND tw.deleted_at is null
-            ),
-            'notes', s.notes,
             'quantity', s.quantity,
             'created_at', p.created_at::timestamptz,
             'updated_at', p.updated_at::timestamptz,
             'deleted_at', p.deleted_at::timestamptz
         )
     FROM
-        stock_movements s
-    WHERE s.deleted_at is null;`
+        product_stocks s
+    WHERE s.product_id = $1 AND s.warehouse_id = $2
+        AND s.deleted_at is null;`
 
 	var b []byte
-	err := r.db.QueryRow(ctx, &b, query)
+	err := r.db.QueryRow(ctx, &b, query, productID, warehouseID)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to fetch stock from db")
 	}
 
-	var stock []entity.StockMovement
+	var stock entity.ProductStock
 	if err := json.Unmarshal(b, &stock); err != nil {
 		return nil, errors.Wrap(err, "failed to unmarshal byte to user")
 	}
 
-	return stock, nil
+	return &stock, nil
 }

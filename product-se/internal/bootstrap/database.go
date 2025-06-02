@@ -19,7 +19,6 @@ func RegistryDatabase(cfg *appctx.Database) *databasex.DB {
 		Password:     cfg.Pass,
 		Port:         cfg.Port,
 		User:         cfg.User,
-		DialTimeout:  cfg.DialTimeout,
 		MaxOpenConns: cfg.MaxOpen,
 		MaxIdleConns: cfg.MaxIdle,
 		MaxLifetime:  cfg.MaxLifeTime,
@@ -61,14 +60,11 @@ func RegistryMultiDatabase(cfgWrite *appctx.Database, cfgRead *appctx.Database) 
 		Password:     cfgWrite.Pass,
 		Port:         cfgWrite.Port,
 		User:         cfgWrite.User,
-		DialTimeout:  cfgWrite.DialTimeout,
 		MaxOpenConns: cfgWrite.MaxOpen,
 		MaxIdleConns: cfgWrite.MaxIdle,
 		MaxLifetime:  cfgWrite.MaxLifeTime,
 		Charset:      cfgWrite.Charset,
 		TimeZone:     cfgWrite.Timezone,
-		WriteTimeout: cfgWrite.WriteTimeout,
-		ReadTimeout:  cfgWrite.ReadTimeout,
 	})
 
 	if err != nil {
@@ -82,14 +78,11 @@ func RegistryMultiDatabase(cfgWrite *appctx.Database, cfgRead *appctx.Database) 
 		Password:     cfgRead.Pass,
 		Port:         cfgRead.Port,
 		User:         cfgRead.User,
-		DialTimeout:  cfgRead.DialTimeout,
 		MaxOpenConns: cfgRead.MaxOpen,
 		MaxIdleConns: cfgRead.MaxIdle,
 		MaxLifetime:  cfgRead.MaxLifeTime,
 		Charset:      cfgRead.Charset,
 		TimeZone:     cfgRead.Timezone,
-		WriteTimeout: cfgRead.WriteTimeout,
-		ReadTimeout:  cfgRead.ReadTimeout,
 	})
 
 	if err != nil {

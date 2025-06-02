@@ -76,7 +76,7 @@ func (r product) GetStockMovementByProductID(ctx context.Context, productID stri
         AND s.deleted_at is null;`
 
 	var b []byte
-	err := r.db.QueryRow(ctx, query, productID).Scan(&b)
+	err := r.db.QueryRow(ctx, &b, query, productID)
 	if err != nil {
 		sqlErr := r.db.ParseSQLError(err)
 		switch sqlErr {

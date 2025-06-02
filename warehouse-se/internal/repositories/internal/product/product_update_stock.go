@@ -1,20 +1,18 @@
-package warehouse
+package product
 
 import (
 	"context"
 	"database/sql"
-	"product-se/internal/repositories/repooption"
+	"warehouse-se/internal/consts"
+	"warehouse-se/internal/presentations"
+	"warehouse-se/internal/repositories/repooption"
+	"warehouse-se/pkg/postgres"
 	"time"
 
-	"product-se/internal/consts"
-	"product-se/pkg/postgres"
-
-	"github.com/google/uuid"
 	"github.com/pkg/errors"
-	"product-se/internal/presentations"
 )
 
-func (r warehouse) CreateMoveStockWarehouse(ctx context.Context, input presentations.WarehouseCreateMoveStock, opts ...repooption.TxOption) error {
+func (r product) UpdateProductStock(ctx context.Context, stockID string, input presentations.ProductUpdateStock, opts ...repooption.TxOption) error {
 
 	txOpt := repooption.TxOptions{
 		Tx:              nil,
@@ -35,18 +33,18 @@ func (r warehouse) CreateMoveStockWarehouse(ctx context.Context, input presentat
 	}
 
 	tx := txOpt.Tx
-	tNow := time.Now().Local()
-
-	query := `INSERT INTO stock_movements (id, product_id, from_warehouse_id, to_warehouse_id, quantity, notes, created_at, updated_at) VALUES ($1, $2, $3, $4, $5, $6, $7, $7)`
+	query := `
+	UPDATE products 
+	SET 
+	    quantity = $2, 
+	    updated_at = $3 
+	WHERE id = $1 
+	AND deleted_at is null;`
 
 	values := []interface{}{
-		uuid.New().String(),
-		input.ProductID,
-		input.FromWarehouseID,
-		input.ToWarehouseID,
+		stockID,
 		input.Quantity,
-		input.Notes,
-		tNow,
+		time.Now().Local(),
 	}
 
 	if _, err := tx.ExecContext(ctx, query, values...); err != nil {
@@ -60,7 +58,7 @@ func (r warehouse) CreateMoveStockWarehouse(ctx context.Context, input presentat
 		if errSql != nil {
 			switch errSql {
 			case postgres.ErrUniqueViolation:
-				return consts.ErrWarehouseAlreadyExist
+				return consts.ErrProductAlreadyExist
 
 			default:
 				return errors.Wrap(err, "failed execute query")

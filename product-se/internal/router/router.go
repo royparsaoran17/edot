@@ -12,7 +12,6 @@ import (
 	"product-se/internal/presentations"
 	"product-se/internal/repositories"
 	"product-se/internal/service/product"
-	"product-se/internal/service/warehouse"
 	"product-se/pkg/tracer"
 	"time"
 
@@ -160,8 +159,7 @@ func (rtr *router) Route() *routerkit.Router {
 
 	// initiate services
 	var (
-		productService   = product.NewService(repo)
-		warehouseService = warehouse.NewService(repo)
+		productService = product.NewService(repo)
 	)
 
 	// healthy
@@ -171,7 +169,6 @@ func (rtr *router) Route() *routerkit.Router {
 	)).Methods(http.MethodGet)
 
 	rtr.mountProducts(productService)
-	rtr.mountWarehouses(warehouseService)
 
 	return rtr.router
 

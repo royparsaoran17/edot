@@ -52,9 +52,9 @@ func (r product) GetAllProduct(ctx context.Context, meta *common.Metadata) ([]en
 		)
 	}
 
-	products := make([]entity.Warehouse, 0)
+	products := make([]entity.Product, 0)
 
-	err = r.db.Fetch(ctx, &warehouses, query, params.Limit, params.Offset, params.DateFrom, params.DateEnd)
+	err = r.db.Query(ctx, &products, query, params.Limit, params.Offset, params.DateFrom, params.DateEnd)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get all warehouses from database")
 	}
