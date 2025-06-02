@@ -5,17 +5,48 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83df1fc7-9655-4004-b628-f7e25079cc5b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/internal/repositories/contract.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/repositories/contract_repo.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/repositories/repooption/tx_options.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/repositories/repository.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/databasex/connection.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/databasex/contract.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/databasex/databasex.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/databasex/db_multi.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/databasex/db_single.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/databasex/error.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/databasex/migration.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/presentations/product.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/presentations/warehouse.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/provider/product/warehouse_create.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/provider/product/warehouse_entity.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/provider/product/warehouse_get_list.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/appctx/cfg.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/appctx/cfg.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/entity/customer.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/entity/customer.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/middleware/auth_middleware.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/middleware/auth_middleware.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/presentations/auth.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/presentations/auth.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/presentations/customer.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/presentations/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/presentations/transaction.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/presentations/wallet.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/provider/auth/auth.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/provider/auth/auth_create_role.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/provider/auth/auth_create_user.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/provider/auth/auth_entity.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/provider/auth/auth_get_list_roles.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/provider/auth/auth_get_list_user.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/provider/auth/auth_login.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/provider/auth/auth_meta.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/provider/auth/auth_vefify.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/provider/contract.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/provider/contract.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/provider/provider.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/provider/provider.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repositories/contract.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repositories/contract_repo.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repositories/repooption/tx_options.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repositories/repository.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/service/auth/auth_contract.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/auth/auth_contract.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/service/auth/auth_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/auth/auth_service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/service/role/role_contract.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/role/role_contract.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/service/role/role_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/role/role_service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/service/user/customer_contract.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/user/customer_contract.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/service/user/customer_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/user/customer_service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/ucase/user/customer_get_all.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/ucase/user/user_get_all.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/databasex/connection.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/databasex/contract.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/databasex/databasex.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/databasex/db_multi.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/databasex/db_single.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/databasex/error.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/databasex/migration.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../product-se/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../product-se/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../user-se/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../user-se/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -60,7 +91,7 @@
     "git-widget-placeholder": "main",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "/Users/royparsaoran/Roy/PlayGround/edot/manage-se/internal",
+    "last_opened_file_path": "/Users/royparsaoran/Roy/PlayGround/edot/manage-se/internal/provider/product",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm"
@@ -68,11 +99,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/internal/provider/product" />
+      <recent name="$PROJECT_DIR$/internal/presentations" />
+      <recent name="$PROJECT_DIR$/internal/provider" />
       <recent name="$PROJECT_DIR$/internal" />
       <recent name="$PROJECT_DIR$/pkg" />
-      <recent name="$PROJECT_DIR$/internal/router" />
-      <recent name="$PROJECT_DIR$/internal/ucase/wallet" />
-      <recent name="$PROJECT_DIR$/internal/ucase/withdraw" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/internal/service/customer" />

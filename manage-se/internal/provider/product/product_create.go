@@ -1,4 +1,4 @@
-package auth
+package product
 
 import (
 	"bytes"
@@ -12,8 +12,8 @@ import (
 	"net/http"
 )
 
-func (c *client) Verify(ctx context.Context, input presentations.Verify) (*UserDetail, error) {
-	urlEndpoint := c.endpoint("/internal/v1/verify")
+func (c *client) CreateProduct(ctx context.Context, input presentations.ProductCreate) (*Product, error) {
+	urlEndpoint := c.endpoint("/internal/v1/products")
 
 	var request bytes.Buffer
 	err := json.NewEncoder(&request).Encode(input)
@@ -40,7 +40,7 @@ func (c *client) Verify(ctx context.Context, input presentations.Verify) (*UserD
 	switch res.StatusCode {
 	case http.StatusOK:
 		body := struct {
-			Data UserDetail `json:"data"`
+			Data Product `json:"data"`
 		}{}
 
 		err = json.Unmarshal(rawBody, &body)

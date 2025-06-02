@@ -277,14 +277,14 @@ type (
 )
 
 type Provider struct {
-	Auth   Auth   `yaml:"auth" json:"auth"`
-	Wallet Wallet `yaml:"wallet" json:"wallet"`
+	User    User    `yaml:"user" json:"user"`
+	Product Product `yaml:"product" json:"product"`
 }
 
-type Auth struct {
+type User struct {
 	BaseURL string `yaml:"base_url" json:"base_url"`
 }
 
-type Wallet struct {
+type Product struct {
 	BaseURL string `yaml:"base_url" json:"base_url"`
 }

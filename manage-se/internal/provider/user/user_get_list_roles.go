@@ -1,38 +1,30 @@
-package auth
+package user
 
 import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"fmt"
 	"github.com/pkg/errors"
 	"io"
-	"manage-se/internal/presentations"
 	"manage-se/internal/provider/providererrors"
-	"manage-se/pkg/httpx"
 	"net/http"
 )
 
-func (c *client) Login(ctx context.Context, input presentations.Login) (*UserDetailToken, error) {
-	urlEndpoint := c.endpoint("/internal/v1/login")
+func (c *client) GetListRoles(ctx context.Context) ([]Role, error) {
+	urlEndpoint := c.endpoint("/internal/v1/roles")
 
-	var request bytes.Buffer
-	err := json.NewEncoder(&request).Encode(input)
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, urlEndpoint, nil)
 	if err != nil {
-		return nil, errors.Wrap(err, "new encoder encode")
+		return nil, errors.Wrap(err, "new request failed")
 	}
-
-	req, err := http.NewRequestWithContext(ctx, http.MethodPost, urlEndpoint, &request)
-	if err != nil {
-		return nil, errors.Wrap(err, "new request with context")
-	}
-
-	req.Header.Set(httpx.ContentType, httpx.MediaTypeJSON)
 
 	res, err := c.dep.HttpClient.Do(req)
 	if err != nil {
-		return nil, errors.Wrap(err, "do request")
+		return nil, errors.Wrap(err, fmt.Sprintf("doing http request to %s", req.URL))
 	}
 
+	// Re-usable response body for logging
 	rawBody, _ := io.ReadAll(res.Body)
 	res.Body.Close() // must close
 	res.Body = io.NopCloser(bytes.NewBuffer(rawBody))
@@ -40,7 +32,7 @@ func (c *client) Login(ctx context.Context, input presentations.Login) (*UserDet
 	switch res.StatusCode {
 	case http.StatusOK:
 		body := struct {
-			Data UserDetailToken `json:"data"`
+			Data []Role `json:"data"`
 		}{}
 
 		err = json.Unmarshal(rawBody, &body)
@@ -48,7 +40,7 @@ func (c *client) Login(ctx context.Context, input presentations.Login) (*UserDet
 			return nil, providererrors.NewErrRequestWithResponse(req, res)
 		}
 
-		return &body.Data, nil
+		return body.Data, nil
 
 	default:
 		bodyErr := providererrors.Error{}
@@ -59,6 +51,5 @@ func (c *client) Login(ctx context.Context, input presentations.Login) (*UserDet
 
 		bodyErr.Code = res.StatusCode
 		return nil, bodyErr
-
 	}
 }

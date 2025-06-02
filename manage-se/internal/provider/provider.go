@@ -2,14 +2,16 @@ package provider
 
 import (
 	"manage-se/internal/appctx"
-	"manage-se/internal/provider/auth"
 	"manage-se/internal/provider/dependencies"
+	"manage-se/internal/provider/product"
+	"manage-se/internal/provider/user"
 	"net/http"
 	"time"
 )
 
 type Provider struct {
-	Auth Auth
+	User    User
+	Product Product
 }
 
 func NewProviders(cfg *appctx.Provider, options ...Option) *Provider {
@@ -20,7 +22,8 @@ func NewProviders(cfg *appctx.Provider, options ...Option) *Provider {
 	}
 
 	return &Provider{
-		Auth: auth.NewClient(&cfg.Auth, dep),
+		User:    user.NewClient(&cfg.User, dep),
+		Product: product.NewClient(&cfg.Product, dep),
 	}
 }
 

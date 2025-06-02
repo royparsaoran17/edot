@@ -6,19 +6,20 @@ import (
 )
 
 type Login struct {
-	Phone    string `json:"phone"`
+	Username string `json:"username"`
 	Password string `json:"password"`
 }
 
 func (r *Login) Validate() error {
 	return validation.Errors{
-		"phone":    validation.Validate(&r.Phone, validation.Required, is.E164),
+		"username": validation.Validate(&r.Username, validation.Required),
 		"password": validation.Validate(&r.Password, validation.Required),
 	}.Filter()
 }
 
 type Register struct {
 	Name   string `json:"name"`
+	Email  string `json:"email"`
 	Phone  string `json:"phone"`
 	RoleID string `json:"role_id"`
 }
@@ -26,6 +27,7 @@ type Register struct {
 func (r *Register) Validate() error {
 	return validation.Errors{
 		"name":    validation.Validate(&r.Name, validation.Required),
+		"email":   validation.Validate(&r.Email, validation.Required, is.Email),
 		"phone":   validation.Validate(&r.Phone, validation.Required, is.E164),
 		"role_id": validation.Validate(&r.RoleID, validation.Required, is.UUID),
 	}.Filter()

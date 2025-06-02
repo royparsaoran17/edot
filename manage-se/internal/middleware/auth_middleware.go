@@ -17,14 +17,14 @@ import (
 
 func Authorize(authService auth.Auth, roleNames ...string) MiddlewareFunc {
 	return func(w http.ResponseWriter, r *http.Request, conf *appctx.Config) error {
-		ctx := tracer.SpanStart(r.Context(), "middleware.auth")
+		ctx := tracer.SpanStart(r.Context(), "middleware.user")
 
 		bearerToken := entity.BearerToken(r.Header.Get("Authorization"))
 
 		responder := appctx.NewResponse().WithState("authenticate").WithContext(ctx)
 
 		fl := logger.Fields{
-			logger.EventName("middleware.auth"),
+			logger.EventName("middleware.user"),
 			logger.Field{
 				Key:   "bearer-token",
 				Value: bearerToken.String(),

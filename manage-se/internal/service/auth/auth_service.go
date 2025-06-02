@@ -11,7 +11,7 @@ import (
 	"manage-se/internal/consts"
 	"manage-se/internal/presentations"
 	"manage-se/internal/provider"
-	"manage-se/internal/provider/auth"
+	"manage-se/internal/provider/user"
 	"time"
 )
 
@@ -24,7 +24,7 @@ func NewService(provider *provider.Provider, rdb redis.Cmdable) Auth {
 	return &service{provider: provider, rdb: rdb}
 }
 
-func (s *service) Login(ctx context.Context, input presentations.Login) (*auth.UserDetailToken, error) {
+func (s *service) Login(ctx context.Context, input presentations.Login) (*user.UserDetailToken, error) {
 	if err := input.Validate(); err != nil {
 		return nil, errors.Wrap(err, "validation(s) error")
 	}
@@ -37,7 +37,7 @@ func (s *service) Login(ctx context.Context, input presentations.Login) (*auth.U
 	return auth, nil
 }
 
-func (s *service) Register(ctx context.Context, input presentations.Register) (*auth.UserDetail, error) {
+func (s *service) Register(ctx context.Context, input presentations.Register) (*user.UserDetail, error) {
 	if err := input.Validate(); err != nil {
 		return nil, errors.Wrap(err, "validation(s) error")
 	}
@@ -59,7 +59,7 @@ func (s *service) Register(ctx context.Context, input presentations.Register) (*
 	return user, nil
 }
 
-func (s *service) VerifyToken(ctx context.Context, input presentations.Verify) (*auth.UserDetail, error) {
+func (s *service) VerifyToken(ctx context.Context, input presentations.Verify) (*user.UserDetail, error) {
 
 	var (
 		keyRedis = fmt.Sprintf(consts.FormatStringAuthCache, input.Token)
@@ -82,17 +82,17 @@ func (s *service) VerifyToken(ctx context.Context, input presentations.Verify) (
 
 			err = s.rdb.Set(ctx, keyRedis, userCacheBytes, time.Hour*1).Err()
 			if err != nil {
-				return nil, errors.Wrap(err, "set user auth cache on redis")
+				return nil, errors.Wrap(err, "set user user cache on redis")
 			}
 
 			return verify, nil
 
 		default:
-			return nil, errors.Wrap(err, "redis get user auth cache")
+			return nil, errors.Wrap(err, "redis get user user cache")
 		}
 	}
 
-	var user auth.UserDetail
+	var user user.UserDetail
 	err = json.Unmarshal(userCacheBytes, &user)
 	if err != nil {
 		return nil, errors.Wrap(err, "unmarshal user cache bytes to struct")
