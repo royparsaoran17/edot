@@ -3,14 +3,14 @@
 docker-compose.yaml -> untuk menjalanlan depedencynya
 
 
-## Run Auth Service
-1. cd auth-se 
+## Run User Service
+1. cd user-se 
 2. go run main.go db:migrate up
 3. go run main.go http
 
 
-## Run Wallet Service
-1. cd wallet-se  
+## Run Product Service
+1. cd product-se  
 2. go run main.go db:migrate up
 3. go run main.go http
 
