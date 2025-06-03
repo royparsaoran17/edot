@@ -24,7 +24,9 @@ type Product struct {
 type ProductStock struct {
 	ID          string     `db:"id,omitempty" json:"id"`
 	ProductID   string     `db:"product_id,omitempty" json:"product_id"`
+	Product     Product    `db:"product,omitempty" json:"product"`
 	WarehouseID string     `db:"warehouse_id,omitempty" json:"warehouse_id"`
+	Warehouse   Warehouse  `db:"warehouse,omitempty" json:"warehouse"`
 	Quantity    int        `db:"quantity,omitempty" json:"quantity"`
 	CreatedAt   time.Time  `db:"created_at,omitempty" json:"created_at"`
 	UpdatedAt   time.Time  `db:"updated_at,omitempty" json:"updated_at"`

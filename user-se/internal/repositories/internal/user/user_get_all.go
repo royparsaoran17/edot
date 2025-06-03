@@ -3,6 +3,7 @@ package user
 import (
 	"auth-se/internal/common"
 	"auth-se/internal/entity"
+	"auth-se/pkg/logger"
 	"context"
 	"fmt"
 	"github.com/pkg/errors"
@@ -16,22 +17,22 @@ func (c user) GetAllUser(ctx context.Context, meta *common.Metadata) ([]entity.U
 	}
 
 	query := `
-SELECT 
-    id, 
-    name, 
-    email, 
-    phone, 
-    role_id,
-    created_at::timestamptz,
-    updated_at::timestamptz, 
-    deleted_at::timestamptz
-FROM users 
-    WHERE 1=1
-        AND deleted_at is null
-        AND created_at >= GREATEST($3::date, '-infinity'::date)
-        AND created_at <= LEAST($4::date, 'infinity'::date)
-        ORDER BY created_at DESC
-        LIMIT $1 OFFSET $2
+		SELECT 
+			id, 
+			name, 
+			email, 
+			phone, 
+			role_id,
+			created_at::timestamptz,
+			updated_at::timestamptz, 
+			deleted_at::timestamptz
+		FROM users 
+			WHERE 1=1
+				AND deleted_at is null
+				AND created_at >= GREATEST($3::date, '-infinity'::date)
+				AND created_at <= LEAST($4::date, 'infinity'::date)
+				ORDER BY created_at DESC
+				LIMIT $1 OFFSET $2
 `
 
 	query = strings.Replace(
@@ -54,6 +55,7 @@ FROM users
 
 	err = c.db.Fetch(ctx, &roles, query, params.Limit, params.Offset, params.DateFrom, params.DateEnd)
 	if err != nil {
+		logger.Info(err.Error())
 		return nil, errors.Wrap(err, "failed to get all roles from database")
 	}
 
@@ -75,6 +77,7 @@ FROM users
 	var count int
 	err = c.db.FetchRow(ctx, &count, query, params.DateFrom, params.DateEnd)
 	if err != nil {
+		logger.Info(err.Error())
 		return nil, errors.Wrap(err, "fetch count")
 	}
 

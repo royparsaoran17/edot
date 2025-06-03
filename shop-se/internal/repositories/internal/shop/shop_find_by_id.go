@@ -14,7 +14,7 @@ func (r shop) FindShopByID(ctx context.Context, shopID string) (*entity.Shop, er
 SELECT 
     id, 
     name, 
-    is_active, 
+    owner_id, 
     created_at::timestamptz,
     updated_at::timestamptz, 
     deleted_at::timestamptz

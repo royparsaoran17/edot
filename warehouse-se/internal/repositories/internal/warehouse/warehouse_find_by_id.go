@@ -3,6 +3,7 @@ package warehouse
 import (
 	"context"
 	"database/sql"
+	"warehouse-se/pkg/logger"
 
 	"github.com/pkg/errors"
 	"warehouse-se/internal/consts"
@@ -28,6 +29,7 @@ WHERE id = $1
 
 	err := r.db.QueryRow(ctx, &warehouse, query, warehouseID)
 	if err != nil {
+		logger.Info(err.Error())
 		switch err {
 		case sql.ErrNoRows:
 			return nil, consts.ErrWarehouseNotFound

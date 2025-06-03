@@ -44,7 +44,7 @@ func (r product) GetStockDetail(ctx context.Context, productID, warehouseID stri
 						'deleted_at', fw.deleted_at::timestamptz
 					)
                 FROM warehouses fw
-                    WHERE s.warehouse_id, = fw.id
+                    WHERE s.warehouse_id = fw.id
                     AND fw.deleted_at is null
             ),
             'quantity', s.quantity,

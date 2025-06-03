@@ -6,6 +6,7 @@ import (
 	"github.com/pkg/errors"
 	"shop-se/internal/common"
 	"shop-se/internal/entity"
+	"shop-se/pkg/logger"
 	"strings"
 )
 
@@ -19,7 +20,7 @@ func (r shop) GetAllShop(ctx context.Context, meta *common.Metadata) ([]entity.S
 		SELECT 
 			id, 
 			name, 
-    		is_active, 
+    		owner_id, 
 			created_at::timestamptz,
 			updated_at::timestamptz, 
 			deleted_at::timestamptz
@@ -51,6 +52,7 @@ func (r shop) GetAllShop(ctx context.Context, meta *common.Metadata) ([]entity.S
 
 	err = r.db.Query(ctx, &shops, query, params.Limit, params.Offset, params.DateFrom, params.DateEnd)
 	if err != nil {
+		logger.Info(err.Error())
 		return nil, errors.Wrap(err, "failed to get all shops from database")
 	}
 

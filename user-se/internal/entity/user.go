@@ -8,6 +8,7 @@ import (
 type User struct {
 	ID        uuid.UUID  `json:"id" db:"id"`
 	Name      string     `json:"name" db:"name"`
+	Email     string     `json:"email" db:"email"`
 	Phone     string     `json:"phone" db:"phone"`
 	Password  string     `json:"password,omitempty" db:"password"`
 	RoleID    uuid.UUID  `json:"role_id" db:"role_id"`
@@ -19,6 +20,7 @@ type User struct {
 type UserDetail struct {
 	ID        uuid.UUID  `json:"id" db:"id"`
 	Name      string     `json:"name" db:"name"`
+	Email     string     `json:"email" db:"email"`
 	Phone     string     `json:"phone" db:"phone"`
 	Password  string     `json:"password" db:"password"`
 	RoleID    uuid.UUID  `json:"role_id" db:"role_id"`
