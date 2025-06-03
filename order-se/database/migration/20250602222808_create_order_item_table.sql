@@ -11,7 +11,7 @@ create table if not exists order_items (
     updated_at timestamp not null,
     deleted_at timestamp,
 
-    constraint fk_order foreign key (order_id) references orders (id),
+    constraint fk_order foreign key (order_id) references orders (id)
 );
 
 -- +goose Down

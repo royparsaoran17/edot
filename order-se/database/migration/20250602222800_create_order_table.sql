@@ -6,7 +6,7 @@ create table if not exists orders (
     total_price numeric(12, 2) not null default 0,
     created_at timestamp not null,
     updated_at timestamp not null,
-    deleted_at timestamp,
+    deleted_at timestamp
 );
 
 -- +goose Down

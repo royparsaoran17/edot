@@ -10,7 +10,7 @@ create table if not exists product_stocks
     updated_at timestamp not null,
     deleted_at timestamp,
 
-    constraint fk_product foreign key (product_id) references products (id),
+    constraint fk_product foreign key (product_id) references products (id)
     );
 
 create index product_stocks_product_id_index on product_stocks (product_id);

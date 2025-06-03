@@ -28,7 +28,7 @@ func (c user) FindUserByID(ctx context.Context, userID string) (*entity.User, er
         AND c.deleted_at is null;`
 
 	var b []byte
-	err := c.db.QueryRow(ctx, query, userID).Scan(&b)
+	err := c.db.QueryRow(ctx, &b, query, userID)
 	if err != nil {
 		sqlErr := c.db.ParseSQLError(err)
 		switch sqlErr {
